@@ -1,7 +1,7 @@
 {
   "name": "pc-managment",
   "private": true,
-  "packageManager": "pnpm@10",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev:backend": "turbo run dev --filter=backend",
     "test:backend": "turbo run test --filter=backend",

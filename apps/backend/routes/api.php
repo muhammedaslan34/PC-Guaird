@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\MeController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Audit\ListAuditLogsController;
 use App\Http\Controllers\Api\Commands\ListCommandsController;
 use App\Http\Controllers\Api\Commands\StoreCommandController;
 use App\Http\Controllers\Api\Devices\PairDeviceController;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/devices/pair', PairDeviceController::class);
     Route::get('/devices/{device}/commands', ListCommandsController::class);
     Route::post('/devices/{device}/commands', StoreCommandController::class);
+    Route::get('/devices/{device}/audit-logs', ListAuditLogsController::class);
 });
 
 Route::get('/user', function (Request $request) {
