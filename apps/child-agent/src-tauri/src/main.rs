@@ -1,5 +1,6 @@
 mod app;
 mod ipc;
+mod pairing;
 mod service;
 mod tray;
 
