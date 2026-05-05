@@ -1,16 +1,25 @@
 <?php
 
 use App\Http\Controllers\Api\Devices\IssuePairingCodeController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Devices\HeartbeatController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/pairing-codes', IssuePairingCodeController::class);
 
 Route::middleware('device.auth')->group(function () {
-    Route::post('/heartbeat', function (Request $request) {
+    Route::post('/heartbeat', HeartbeatController::class);
+
+    Route::post('/broadcasting/auth', function () {
+        $device = request()->attributes->get('device');
+        $channelName = (string) request()->input('channel_name');
+        $expectedChannel = "private-devices.{$device->id}";
+
+        if ($channelName !== $expectedChannel) {
+            abort(403);
+        }
+
         return response()->json([
-            'status' => 'ok',
-            'token' => $request->bearerToken(),
+            'auth' => "device:{$device->id}",
         ]);
     });
 
