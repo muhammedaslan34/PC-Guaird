@@ -1,0 +1,13 @@
+{
+  "name": "pc-managment",
+  "private": true,
+  "packageManager": "pnpm@10",
+  "scripts": {
+    "dev:backend": "turbo run dev --filter=backend",
+    "test:backend": "turbo run test --filter=backend",
+    "lint:backend": "turbo run lint --filter=backend"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  }
+}
