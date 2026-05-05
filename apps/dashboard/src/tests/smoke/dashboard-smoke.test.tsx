@@ -1,10 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import Home from "@/app/page";
+import LoginPage from "@/app/(auth)/login/page";
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+    refresh: vi.fn(),
+  }),
+}));
 
 describe("dashboard scaffold", () => {
-  it("renders the dashboard app marker", () => {
-    render(<Home />);
+  it("renders the dashboard login shell", () => {
+    render(<LoginPage />);
 
-    expect(screen.getByText("PC Guard Dashboard")).toBeInTheDocument();
+    expect(
+      screen.getByText("Sign in to PC Guard Dashboard"),
+    ).toBeInTheDocument();
   });
 });
