@@ -13,5 +13,6 @@ apps/backend/vendor/
 apps/backend/node_modules/
 apps/backend/public/build/
 apps/backend/storage/*.key
+target/
 .worktrees/
 worktrees/
