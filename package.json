@@ -4,8 +4,12 @@
   "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev:backend": "turbo run dev --filter=backend",
+    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "build:dashboard": "turbo run build --filter=dashboard",
     "test:backend": "turbo run test --filter=backend",
-    "lint:backend": "turbo run lint --filter=backend"
+    "test:dashboard": "turbo run test --filter=dashboard",
+    "lint:backend": "turbo run lint --filter=backend",
+    "lint:dashboard": "turbo run lint --filter=dashboard"
   },
   "devDependencies": {
     "turbo": "^2.0.0"
