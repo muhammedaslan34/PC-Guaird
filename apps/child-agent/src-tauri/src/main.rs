@@ -2,6 +2,7 @@ mod app;
 mod ipc;
 mod pairing;
 mod service;
+mod storage;
 mod tray;
 
 #[cfg(test)]
