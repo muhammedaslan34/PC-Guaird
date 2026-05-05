@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\MeController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Devices\ListDevicesController;
+use App\Http\Controllers\Api\Devices\ShowDeviceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,11 @@ Route::prefix('auth')->group(function () {
         Route::post('/logout', LogoutController::class);
         Route::get('/me', MeController::class);
     });
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/devices', ListDevicesController::class);
+    Route::get('/devices/{device}', ShowDeviceController::class);
 });
 
 Route::get('/user', function (Request $request) {
