@@ -1,0 +1,11 @@
+{
+  "name": "child-agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cargo run --manifest-path src-tauri/Cargo.toml",
+    "build": "cargo build --manifest-path src-tauri/Cargo.toml",
+    "test": "cargo test --manifest-path src-tauri/Cargo.toml",
+    "lint": "cargo fmt --manifest-path src-tauri/Cargo.toml --check"
+  }
+}
