@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\Devices\IssuePairingCodeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/pairing-codes', IssuePairingCodeController::class);
 
 Route::middleware('device.auth')->group(function () {
     Route::post('/heartbeat', function (Request $request) {
