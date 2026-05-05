@@ -4,7 +4,7 @@
 
 This repository is the Turborepo monorepo for the Parent Remote Control System.
 
-Phase 1 now includes the backend platform in `apps/backend` and the parent dashboard in `apps/dashboard`. The child agent will live in:
+Phase 1 now includes the backend platform in `apps/backend`, the parent dashboard in `apps/dashboard`, and the Windows child agent in:
 
 - `apps/child-agent` for the Tauri child agent
 
@@ -12,16 +12,19 @@ Phase 1 now includes the backend platform in `apps/backend` and the parent dashb
 
 - Node.js
 - pnpm
+- Rust
+- Cargo
 - PHP
 - Composer
 - MySQL
 - Redis
+- WiX Toolset (for Windows child-agent installer packaging)
 
 ## Workspace Layout
 
 - `apps/backend` - Laravel backend API and Reverb server
 - `apps/dashboard` - Next.js parent dashboard
-- `apps/child-agent` - reserved for the future desktop agent
+- `apps/child-agent` - Windows child agent service, tray companion, and installer assets
 - `docs/` - specs and implementation plans
 
 ## Setup
@@ -57,7 +60,13 @@ copy apps/dashboard/.env.example apps/dashboard/.env.local
 
 - `BACKEND_URL=http://127.0.0.1:8000`
 
-6. Run backend migrations:
+6. Create the child-agent environment file when working on the Windows service:
+
+```bash
+copy apps/child-agent/.env.example apps/child-agent/.env
+```
+
+7. Run backend migrations:
 
 ```bash
 php artisan migrate
@@ -83,6 +92,24 @@ Build the dashboard from the repo root:
 pnpm build:dashboard
 ```
 
+Start the child agent from the repo root:
+
+```bash
+pnpm dev:child-agent
+```
+
+Build the child agent Rust workspace from the repo root:
+
+```bash
+pnpm build:child-agent
+```
+
+Build the Windows child-agent installer from the repo root:
+
+```bash
+pnpm package:child-agent
+```
+
 Start Reverb from the backend app:
 
 ```bash
@@ -102,4 +129,10 @@ Run the dashboard test suite from the repo root:
 
 ```bash
 pnpm test:dashboard
+```
+
+Run the child-agent test suite from the repo root:
+
+```bash
+pnpm test:child-agent
 ```

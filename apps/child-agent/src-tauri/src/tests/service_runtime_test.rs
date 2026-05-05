@@ -12,7 +12,10 @@ fn service_runtime_reports_degraded_and_disconnected_states() {
     match pipe.request(PipeRequest::GetStatus) {
         PipeResponse::Status(snapshot) => {
             assert_eq!(snapshot.service_status, ServiceConnectionState::Degraded);
-            assert_eq!(snapshot.last_error.as_deref(), Some("backend reconnect pending"));
+            assert_eq!(
+                snapshot.last_error.as_deref(),
+                Some("backend reconnect pending")
+            );
         }
         other => panic!("expected status response, got {other:?}"),
     }
@@ -23,7 +26,10 @@ fn service_runtime_reports_degraded_and_disconnected_states() {
 
     match pipe.request(PipeRequest::GetStatus) {
         PipeResponse::Status(snapshot) => {
-            assert_eq!(snapshot.service_status, ServiceConnectionState::Disconnected);
+            assert_eq!(
+                snapshot.service_status,
+                ServiceConnectionState::Disconnected
+            );
         }
         other => panic!("expected status response, got {other:?}"),
     }

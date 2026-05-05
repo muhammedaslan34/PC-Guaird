@@ -36,8 +36,8 @@ impl<'a> DiagnosticsLog<'a> {
              ORDER BY id DESC
              LIMIT ?1",
         )?;
-        let rows: Result<Vec<DiagnosticEvent>> =
-            stmt.query_map(rusqlite::params![limit as i64], |row| {
+        let rows: Result<Vec<DiagnosticEvent>> = stmt
+            .query_map(rusqlite::params![limit as i64], |row| {
                 Ok(DiagnosticEvent {
                     id: row.get(0)?,
                     event_type: row.get(1)?,

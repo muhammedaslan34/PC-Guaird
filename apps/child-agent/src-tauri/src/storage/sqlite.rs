@@ -26,7 +26,8 @@ impl Database {
     }
 
     fn initialize_schema(&self) -> Result<()> {
-        self.conn.execute_batch("
+        self.conn.execute_batch(
+            "
             CREATE TABLE IF NOT EXISTS service_state (
                 id                INTEGER PRIMARY KEY,
                 device_uuid       TEXT NOT NULL,
@@ -68,7 +69,8 @@ impl Database {
                 event_payload TEXT NOT NULL DEFAULT '{}',
                 created_at    INTEGER NOT NULL DEFAULT (unixepoch())
             );
-        ")
+        ",
+        )
     }
 }
 
@@ -158,10 +160,7 @@ impl Database {
         Ok(self.conn.last_insert_rowid())
     }
 
-    pub fn load_active_pairing_code(
-        &self,
-        device_uuid: &str,
-    ) -> Result<Option<PairingCacheEntry>> {
+    pub fn load_active_pairing_code(&self, device_uuid: &str) -> Result<Option<PairingCacheEntry>> {
         let now = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap_or_default()

@@ -1,4 +1,6 @@
-use crate::service::transport::{TransportAction, TransportEvent, TransportMachine, TransportState};
+use crate::service::transport::{
+    TransportAction, TransportEvent, TransportMachine, TransportState,
+};
 
 fn has_action(actions: &[TransportAction], target: &TransportAction) -> bool {
     actions.iter().any(|a| a == target)

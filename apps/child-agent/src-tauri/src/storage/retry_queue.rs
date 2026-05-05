@@ -137,8 +137,9 @@ impl<'a> RetryQueue<'a> {
                     status, attempt_count, next_retry_at, last_error_message
              FROM command_queue WHERE status = ?1 ORDER BY id",
         )?;
-        let rows: Result<Vec<QueuedCommand>> =
-            stmt.query_map(rusqlite::params![status], Self::map_row)?.collect();
+        let rows: Result<Vec<QueuedCommand>> = stmt
+            .query_map(rusqlite::params![status], Self::map_row)?
+            .collect();
         rows
     }
 

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Child Agent",
+  "version": "0.1.0",
+  "identifier": "com.pcmanagment.child-agent",
+  "build": {
+    "frontendDist": "../src",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Child Agent",
+        "width": 960,
+        "height": 640,
+        "visible": false
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["msi"],
+    "windows": {
+      "wix": {
+        "language": "en-US"
+      }
+    }
+  }
+}

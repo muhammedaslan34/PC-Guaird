@@ -1,6 +1,9 @@
+mod commands_test;
+mod installer_test;
 mod ipc_named_pipe_test;
 mod pairing_test;
 mod scaffold_test;
+mod service_runtime_test;
 mod storage_test;
 mod transport_test;
 mod tray_status_test;

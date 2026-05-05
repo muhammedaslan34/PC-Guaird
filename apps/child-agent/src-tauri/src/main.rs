@@ -1,15 +1,7 @@
-mod app;
-mod ipc;
-mod pairing;
-mod service;
-mod storage;
-mod tray;
-
-#[cfg(test)]
-mod tests;
+use child_agent::{app, service::ServiceRuntime};
 
 fn main() {
-    let runtime = service::ServiceRuntime::new();
+    let runtime = ServiceRuntime::new();
     println!(
         "{} service scaffold running as {} with tray {}",
         app::APP_NAME,

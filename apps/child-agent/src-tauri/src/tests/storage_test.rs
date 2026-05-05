@@ -90,7 +90,8 @@ fn pairing_cache_stores_and_retrieves_active_code() {
 fn pairing_cache_expired_code_is_not_returned() {
     let db = Database::open_in_memory().unwrap();
     let past_ts = 1_i64; // epoch + 1s — safely in the past
-    db.cache_pairing_code("uuid-abc", "OLDCOD", past_ts).unwrap();
+    db.cache_pairing_code("uuid-abc", "OLDCOD", past_ts)
+        .unwrap();
     let entry = db.load_active_pairing_code("uuid-abc").unwrap();
     assert!(entry.is_none(), "expired code should not be returned");
 }
