@@ -1,6 +1,7 @@
 mod app;
 mod ipc;
 mod service;
+mod tray;
 
 #[cfg(test)]
 mod tests;
